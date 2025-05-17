@@ -1,35 +1,100 @@
-/* Base Reset */
-* { margin:0; padding:0; box-sizing:border-box; }
+/* ========================================
+   Next-Level HorseAI.life Styles
+   ======================================== */
 
-/* Root Colors */
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Root Variables */
 :root {
   --nav-bg: #2c3e50;
   --hero-bg: #95a5a6;
   --cta-bg: #f39c12;
-  --secondary-btn-bg: #ecf0f1;
-  --highlight-color: #8e44ad;
   --text-color: #2c3e50;
+  --highlight-color: #8e44ad;
+  --card-bg: #ecf0f1;
   --footer-bg: #2c3e50;
   --footer-text: #ecf0f1;
+
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+
+  --radius-sm: 8px;
+  --radius-lg: 50px;
+
+  --shadow-light: rgba(0,0,0,0.05);
+  --shadow-strong: rgba(0,0,0,0.15);
 }
 
+/* Global Body */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
   color: var(--text-color);
   line-height: 1.6;
+  background: #fafafa;
+  padding: var(--spacing-lg);
 }
 
-/* Utility */
+/* Utility Container */
 .container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
 }
 
-/* Nav */
+/* Links Reset */
+a {
+  text-decoration: none;
+}
+
+/* Button Base */
+.btn {
+  display: inline-block;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-strong);
+}
+
+/* Primary CTA (Explore / Learn More) */
+.btn-primary {
+  background: var(--cta-bg);
+  color: #fff;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* Secondary (if needed) */
+.btn-secondary {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+.btn-secondary:hover {
+  background: #e0e4e7;
+}
+
+/* ========================================
+   Header & Navigation
+   ======================================== */
 header {
   background: var(--nav-bg);
-  padding: 1rem 0;
+  padding: var(--spacing-md) 0;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--spacing-xl);
 }
 .nav-container {
   display: flex;
@@ -37,8 +102,9 @@ header {
   align-items: center;
 }
 .logo {
-  font-size: 1.5rem;
-  color: white;
+  font-size: 1.75rem;
+  color: #fff;
+  font-weight: bold;
 }
 .logo .highlight {
   color: var(--cta-bg);
@@ -46,68 +112,69 @@ header {
 nav ul {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: var(--spacing-lg);
 }
 nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
+  color: #fff;
+  font-size: 1rem;
+  position: relative;
 }
-nav a:hover {
-  text-decoration: underline;
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: var(--cta-bg);
+  left: 0;
+  bottom: -4px;
+  transition: width 0.3s ease;
 }
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Cart badge */
 #cart-count {
-  background: var(--cta-bg);
-  color: white;
-  padding: 0.1rem 0.4rem;
+  background: #e74c3c;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 0.15rem 0.4rem;
   border-radius: 50%;
-  font-size: 0.9rem;
   vertical-align: super;
+  margin-left: 0.25rem;
 }
 
-/* Hero */
+/* ========================================
+   Hero Section
+   ======================================== */
 .hero {
-  background: var(--hero-bg);
-  color: white;
-  padding: 4rem 0;
+  background: var(--hero-bg) url('../images/hero-horse.jpg') center/cover no-repeat;
+  color: #fff;
+  padding: var(--spacing-xl) 0;
+  border-radius: var(--radius-sm);
   text-align: center;
+  box-shadow: 0 4px 10px var(--shadow-light);
+  margin-bottom: var(--spacing-xl);
 }
-.hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
 }
-.hero-content p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-}
-.btn {
-  display: inline-block;
-  padding: 0.8rem 1.5rem;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: bold;
-}
-.btn-cta {
-  background: var(--cta-bg);
-  color: white;
-}
-.btn-secondary {
-  background: var(--secondary-btn-bg);
-  color: var(--text-color);
-}
-.btn-cta:hover,
-.btn-secondary:hover {
-  opacity: 0.9;
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-lg);
 }
 
-/* Services */
+/* ========================================
+   Services Cards
+   ======================================== */
 .services {
-  padding: 4rem 0;
+  margin-bottom: var(--spacing-xl);
 }
 .services-title {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2rem;
+  font-size: 2.25rem;
+  margin-bottom: var(--spacing-lg);
 }
 .services-title .highlight {
   color: var(--highlight-color);
@@ -115,98 +182,213 @@ nav a:hover {
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-  gap: 2rem;
+  gap: var(--spacing-xl);
 }
 .card {
-  background: var(--secondary-btn-bg);
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background: #fff;
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 8px var(--shadow-light);
+  transition: box-shadow 0.2s ease;
+}
+.card:hover {
+  box-shadow: 0 6px 20px var(--shadow-strong);
 }
 .card h3 {
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--text-color);
 }
 .card ul {
   list-style: disc inside;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-md);
+  color: #555;
 }
-.card a.btn-secondary {
-  margin-top: 1rem;
+.card .btn-primary {
+  margin-top: var(--spacing-sm);
 }
 
-/* Catalog */
+/* ========================================
+   Catalogue Grid
+   ======================================== */
 .catalog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 2rem;
-  margin: 2rem 0;
+  gap: var(--spacing-xl);
+  margin: var(--spacing-xl) 0;
 }
 .stallion-card {
-  background: white;
-  border-radius: 8px;
+  background: #fff;
+  border-radius: var(--radius-sm);
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px var(--shadow-light);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-align: center;
-  padding: 1rem;
+}
+.stallion-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px var(--shadow-strong);
 }
 .stallion-card img {
   width: 100%;
   height: auto;
 }
 .stallion-card h3 {
-  margin: 0.5rem 0;
+  margin: var(--spacing-sm) 0;
 }
 .stallion-card p {
-  margin: 0.3rem 0;
+  margin-bottom: var(--spacing-sm);
+  color: #666;
 }
 .stallion-card button {
-  margin-top: 0.5rem;
+  margin: var(--spacing-md) auto 0;
+  width: calc(100% - var(--spacing-xl));
   background: var(--cta-bg);
-  color: white;
+  color: #fff;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
   cursor: pointer;
+  transition: opacity 0.2s ease;
 }
 .stallion-card button:hover {
   opacity: 0.9;
 }
 
-/* Footer */
+/* ========================================
+   Checkout / Cart
+   ======================================== */
+#cart-items {
+  margin-bottom: var(--spacing-lg);
+}
+#cart-items .cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid #ddd;
+}
+#cart-items .cart-item button {
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+#cart-items .cart-item button:hover {
+  opacity: 0.9;
+}
+#checkout-button {
+  background: var(--cta-bg);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: 1.1rem;
+  display: block;
+  margin: 0 auto var(--spacing-xl);
+}
+
+/* ========================================
+   Footer
+   ======================================== */
 footer {
   background: var(--footer-bg);
   color: var(--footer-text);
-  padding: 2rem 0 1rem;
+  padding: var(--spacing-xl) 0 var(--spacing-md);
+  border-radius: var(--radius-sm);
+  margin-top: var(--spacing-xl);
 }
 .footer-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 2rem;
+  gap: var(--spacing-xl);
 }
 .footer-col h4 {
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-md);
 }
 .footer-col ul {
   list-style: none;
 }
 .footer-col ul li {
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-sm);
 }
 .footer-col a {
   color: var(--footer-text);
-  text-decoration: none;
-}
-.footer-col a:hover {
-  text-decoration: underline;
 }
 .footer-bottom {
   text-align: center;
-  margin-top: 1rem;
   font-size: 0.9rem;
+  margin-top: var(--spacing-md);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: var(--spacing-md);
 }
 
-/* Page Titles */
-.page-title {
-  font-size: 2rem;
-  margin: 2rem 0 1rem;
+/* ==============================
+   Checkout Form Beautification
+   ============================== */
+#payment-form {
+  background: #fff;
+  padding: var(--spacing-xl);
+  max-width: 480px;
+  margin: var(--spacing-xl) auto;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px var(--shadow-light);
 }
+
+#payment-form h3 {
+  font-size: 1.75rem;
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+  color: var(--text-color);
+}
+
+#payment-form label {
+  display: block;
+  margin-bottom: var(--spacing-md);
+  color: #555;
+  font-weight: 500;
+}
+
+#payment-form input[type="text"],
+#payment-form input[type="tel"],
+#payment-form input[type="number"] {
+  width: 100%;
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid #ccc;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#payment-form input:focus {
+  border-color: var(--cta-bg);
+  box-shadow: 0 0 4px rgba(243, 156, 18, 0.4);
+  outline: none;
+}
+
+#payment-form button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-md);
+  background: var(--cta-bg);
+  color: #fff;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  margin-top: var(--spacing-lg);
+}
+
+#payment-form button[type="submit"]:hover {
+  background: #d48806;
+  transform: translateY(-2px);
+}
+
+#payment-form ::placeholder {
+  color: #aaa;
+}
+
