@@ -1,159 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HorseAI.life - Premier Equine Genetics</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HorseAI • Premium Equine Insemination</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="app.js"></script>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">Horse<span>AI</span>.life</div>
-            <nav>
-                <ul id="main-nav">
-                    <li><a href="index.html" class="nav-link active">Home</a></li>
-                    <li><a href="stallions.html" class="nav-link">Stallions</a></li>
-                    <li><a href="cart.html" class="nav-link">Cart <span class="cart-icon">🛒 <span class="cart-count">0</span></span></a></li>
-                    <li id="auth-links">
-                        <a href="login.html" class="nav-link">Login</a>
-                        <a href="signup.html" class="nav-link btn-small">Sign Up</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <header>
+    <div class="logo">HorseAI</div>
+    <nav>
+      <button data-view="home" class="active">Home</button>
+      <button data-view="catalogue">Stallions</button>
+      <button data-view="cart">Cart (<span id="cart-count">0</span>)</button>
+    </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Premier Equine Genetics Solutions</h1>
-                <p>Advancing equine excellence through superior genetics and cutting-edge insemination technology</p>
-                <a href="stallions.html" class="btn">Explore Our Stallions</a>
-            </div>
+  <main id="main">
+    <!-- Home / What We Offer -->
+    <section id="home" class="view">
+      <h1>Welcome to HorseAI</h1>
+      <p>Your one-stop equine insemination marketplace.</p>
+      <div class="offer-grid">
+        <div class="offer-card">
+          <h2>For Stallion Owners</h2>
+          <p>Gain maximum exposure for your champion. Reach mare owners worldwide.</p>
         </div>
+        <div class="offer-card">
+          <h2>For Mare Owners</h2>
+          <p>Access the finest stallions, hand-picked for lineage and performance.</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services">
-        <div class="container">
-            <h2 class="section-title">Our <span>Services</span></h2>
-            <div class="services-container">
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('/api/placeholder/600/300')"></div>
-                    <div class="service-content">
-                        <h3>For Stallion Owners</h3>
-                        <ul>
-                            <li>Increased exposure to qualified mare owners worldwide</li>
-                            <li>Professional collection and preservation services</li>
-                            <li>Detailed genetic analysis and marketing</li>
-                            <li>Secure storage with advanced monitoring</li>
-                            <li>Comprehensive revenue tracking and reporting</li>
-                        </ul>
-                        <a href="stallion-services.html" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('/api/placeholder/600/300')"></div>
-                    <div class="service-content">
-                        <h3>For Mare Owners</h3>
-                        <ul>
-                            <li>Access to premium genetics from champion bloodlines</li>
-                            <li>Expert matching recommendations based on your mare's profile</li>
-                            <li>Convenient online browsing and selection</li>
-                            <li>Secure payment processing and scheduling</li>
-                            <li>Comprehensive support throughout the breeding process</li>
-                        </ul>
-                        <a href="mare-services.html" class="btn">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Stallion Catalogue -->
+    <section id="catalogue" class="view hidden">
+      <h1>Our Stallions</h1>
+      <div id="stallions-container" class="cards"></div>
     </section>
 
-    <!-- Featured Stallions Section -->
-    <section class="featured-stallions">
-        <div class="container">
-            <h2 class="section-title">Featured <span>Stallions</span></h2>
-            <div class="stallions-grid" id="featured-stallions">
-                <!-- Featured stallions will be loaded here -->
-            </div>
-            <div class="text-center">
-                <a href="stallions.html" class="btn">View All Stallions</a>
-            </div>
-        </div>
+    <!-- Cart & Checkout -->
+    <section id="cart" class="view hidden">
+      <h1>Your Cart</h1>
+      <div id="cart-container"></div>
+      <div id="checkout" class="hidden">
+        <h2>Checkout</h2>
+        <form id="checkout-form">
+          <label>
+            Name on Card
+            <input type="text" name="cardName" required />
+          </label>
+          <label>
+            Card Number
+            <input type="text" name="cardNumber" minlength="12" maxlength="19" required />
+          </label>
+          <label>
+            Expiry (MM/YY)
+            <input type="text" name="expiry" pattern="\\d{2}/\\d{2}" placeholder="MM/YY" required />
+          </label>
+          <label>
+            CVV
+            <input type="text" name="cvv" minlength="3" maxlength="4" required />
+          </label>
+          <button type="submit">Pay Now</button>
+        </form>
+      </div>
+      <p id="empty-cart" class="muted">Your cart is empty.</p>
     </section>
+  </main>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <h2 class="section-title">Client <span>Testimonials</span></h2>
-            <div class="testimonials-container">
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <p>"HorseAI.life has transformed our breeding program. The quality of genetics available and the ease of the process is unmatched in the industry."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-img" style="background-image: url('/api/placeholder/100/100')"></div>
-                        <div class="author-info">
-                            <h4>Sarah Thompson</h4>
-                            <p>Owner, Thompson Equestrian</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <p>"As a stallion owner, I've seen a dramatic increase in demand since listing with HorseAI.life. Their platform provides incredible exposure to serious breeders."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-img" style="background-image: url('/api/placeholder/100/100')"></div>
-                        <div class="author-info">
-                            <h4>Michael Rodriguez</h4>
-                            <p>Champion Breeder</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-col">
-                    <h3>About HorseAI.life</h3>
-                    <p>Premier provider of equine genetics services with a focus on excellence, ethics, and innovation in horse breeding technology.</p>
-                </div>
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="stallions.html">Stallions</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Contact Us</h3>
-                    <ul>
-                        <li>Email: info@horseai.life</li>
-                        <li>Phone: (555) 123-4567</li>
-                        <li>Address: 123 Equestrian Way, Lexington, KY 40507</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 HorseAI.life. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/config.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/app.js"></script>
+  <footer>
+    &copy; <span id="year"></span> HorseAI • All Rights Reserved
+  </footer>
 </body>
 </html>
+
