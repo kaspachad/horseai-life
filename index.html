@@ -4,507 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HorseAI.life - Premier Equine Genetics</title>
-    <style>
-        /* Global Styles */
-        :root {
-            --primary: #2c3e50;
-            --secondary: #8e44ad;
-            --accent: #f39c12;
-            --light: #ecf0f1;
-            --dark: #34495e;
-            --success: #27ae60;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f5f5;
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header and Navigation */
-        header {
-            background-color: var(--primary);
-            color: white;
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 24px;
-            font-weight: 700;
-        }
-        
-        .logo span {
-            color: var(--accent);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 20px;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            padding: 10px 15px;
-            border-radius: 4px;
-        }
-        
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-        
-        .cart-icon {
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: var(--accent);
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/api/placeholder/1200/600");
-            background-size: cover;
-            background-position: center;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            color: white;
-            text-align: center;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background-color: #e67e22;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        /* Services Section */
-        .services {
-            padding: 80px 0;
-            background-color: white;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 36px;
-            color: var(--primary);
-        }
-        
-        .section-title span {
-            color: var(--secondary);
-        }
-        
-        .services-container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        
-        .service-card {
-            width: 48%;
-            margin-bottom: 40px;
-            background-color: var(--light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .service-img {
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .service-content {
-            padding: 30px;
-        }
-        
-        .service-content h3 {
-            margin-bottom: 15px;
-            font-size: 24px;
-        }
-        
-        .service-content ul {
-            margin-left: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .service-content li {
-            margin-bottom: 8px;
-        }
-        
-        /* Stallions Catalog */
-        .stallions {
-            padding: 80px 0;
-            background-color: #f9f9f9;
-            display: none;
-        }
-        
-        .stallions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .stallion-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .stallion-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .stallion-img {
-            height: 220px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        
-        .stallion-price {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: var(--accent);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: 600;
-        }
-        
-        .stallion-info {
-            padding: 20px;
-        }
-        
-        .stallion-info h3 {
-            margin-bottom: 10px;
-            font-size: 22px;
-        }
-        
-        .stallion-meta {
-            display: flex;
-            margin-bottom: 15px;
-        }
-        
-        .stallion-meta div {
-            margin-right: 20px;
-            font-size: 14px;
-            color: #666;
-        }
-        
-        .stallion-meta div strong {
-            color: var(--dark);
-        }
-        
-        .stallion-info p {
-            margin-bottom: 20px;
-            font-size: 15px;
-        }
-        
-        .add-to-cart {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--secondary);
-        }
-        
-        /* Cart Section */
-        .cart {
-            padding: 80px 0;
-            background-color: #f9f9f9;
-            display: none;
-        }
-        
-        .cart-empty {
-            text-align: center;
-            padding: 50px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .cart-empty h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        
-        .cart-table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .cart-table th, .cart-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .cart-table th {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .cart-table img {
-            width: 80px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-        
-        .cart-product {
-            display: flex;
-            align-items: center;
-        }
-        
-        .cart-product-info {
-            margin-left: 15px;
-        }
-        
-        .cart-product-info h4 {
-            margin-bottom: 5px;
-        }
-        
-        .cart-product-info p {
-            font-size: 14px;
-            color: #666;
-        }
-        
-        .remove-btn {
-            color: #e74c3c;
-            cursor: pointer;
-            font-size: 18px;
-        }
-        
-        .cart-total {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 30px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .cart-total-info h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        
-        .cart-total-info p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-        
-        /* Checkout Form */
-        .checkout-form {
-            margin-top: 40px;
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--secondary);
-        }
-        
-        .form-row {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .form-row .form-group {
-            flex: 1;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 60px 0 30px;
-        }
-        
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-        
-        .footer-col {
-            width: 30%;
-            margin-bottom: 30px;
-        }
-        
-        .footer-col h3 {
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
-        
-        .footer-col ul {
-            list-style: none;
-        }
-        
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-col ul li a {
-            color: #bbb;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-col ul li a:hover {
-            color: white;
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .service-card {
-                width: 100%;
-            }
-            
-            .stallions-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            
-            .footer-col {
-                width: 48%;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .header-container {
-                flex-direction: column;
-            }
-            
-            nav ul {
-                margin-top: 20px;
-            }
-            
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .footer-col {
-                width: 100%;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- Header -->
@@ -512,82 +12,109 @@
         <div class="container header-container">
             <div class="logo">Horse<span>AI</span>.life</div>
             <nav>
-                <ul>
-                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
-                    <li><a href="#" class="nav-link" data-page="stallions">Stallions</a></li>
-                    <li><a href="#" class="nav-link" data-page="cart">Cart <span class="cart-icon">🛒 <span class="cart-count">0</span></span></a></li>
+                <ul id="main-nav">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="stallions.html" class="nav-link">Stallions</a></li>
+                    <li><a href="cart.html" class="nav-link">Cart <span class="cart-icon">🛒 <span class="cart-count">0</span></span></a></li>
+                    <li id="auth-links">
+                        <a href="login.html" class="nav-link">Login</a>
+                        <a href="signup.html" class="nav-link btn-small">Sign Up</a>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Home Page -->
-    <div id="home-page">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>Premier Equine Genetics Solutions</h1>
-                    <p>Advancing equine excellence through superior genetics and cutting-edge insemination technology</p>
-                    <a href="#" class="btn" id="explore-stallions">Explore Our Stallions</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section class="services">
-            <div class="container">
-                <h2 class="section-title">Our <span>Services</span></h2>
-                <div class="services-container">
-                    <div class="service-card">
-                        <div class="service-img" style="background-image: url('/api/placeholder/600/300')"></div>
-                        <div class="service-content">
-                            <h3>For Stallion Owners</h3>
-                            <ul>
-                                <li>Increased exposure to qualified mare owners worldwide</li>
-                                <li>Professional collection and preservation services</li>
-                                <li>Detailed genetic analysis and marketing</li>
-                                <li>Secure storage with advanced monitoring</li>
-                                <li>Comprehensive revenue tracking and reporting</li>
-                            </ul>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-img" style="background-image: url('/api/placeholder/600/300')"></div>
-                        <div class="service-content">
-                            <h3>For Mare Owners</h3>
-                            <ul>
-                                <li>Access to premium genetics from champion bloodlines</li>
-                                <li>Expert matching recommendations based on your mare's profile</li>
-                                <li>Convenient online browsing and selection</li>
-                                <li>Secure payment processing and scheduling</li>
-                                <li>Comprehensive support throughout the breeding process</li>
-                            </ul>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Stallions Page -->
-    <section id="stallions-page" class="stallions">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <h2 class="section-title">Premium <span>Stallions</span></h2>
-            <div class="stallions-grid" id="stallions-grid">
-                <!-- Stallions will be dynamically loaded here -->
+            <div class="hero-content">
+                <h1>Premier Equine Genetics Solutions</h1>
+                <p>Advancing equine excellence through superior genetics and cutting-edge insemination technology</p>
+                <a href="stallions.html" class="btn">Explore Our Stallions</a>
             </div>
         </div>
     </section>
 
-    <!-- Cart Page -->
-    <section id="cart-page" class="cart">
+    <!-- Services Section -->
+    <section class="services">
         <div class="container">
-            <h2 class="section-title">Your <span>Selection</span></h2>
-            <div id="cart-content">
-                <!-- Cart will be dynamically loaded here -->
+            <h2 class="section-title">Our <span>Services</span></h2>
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('/api/placeholder/600/300')"></div>
+                    <div class="service-content">
+                        <h3>For Stallion Owners</h3>
+                        <ul>
+                            <li>Increased exposure to qualified mare owners worldwide</li>
+                            <li>Professional collection and preservation services</li>
+                            <li>Detailed genetic analysis and marketing</li>
+                            <li>Secure storage with advanced monitoring</li>
+                            <li>Comprehensive revenue tracking and reporting</li>
+                        </ul>
+                        <a href="stallion-services.html" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('/api/placeholder/600/300')"></div>
+                    <div class="service-content">
+                        <h3>For Mare Owners</h3>
+                        <ul>
+                            <li>Access to premium genetics from champion bloodlines</li>
+                            <li>Expert matching recommendations based on your mare's profile</li>
+                            <li>Convenient online browsing and selection</li>
+                            <li>Secure payment processing and scheduling</li>
+                            <li>Comprehensive support throughout the breeding process</li>
+                        </ul>
+                        <a href="mare-services.html" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Stallions Section -->
+    <section class="featured-stallions">
+        <div class="container">
+            <h2 class="section-title">Featured <span>Stallions</span></h2>
+            <div class="stallions-grid" id="featured-stallions">
+                <!-- Featured stallions will be loaded here -->
+            </div>
+            <div class="text-center">
+                <a href="stallions.html" class="btn">View All Stallions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Client <span>Testimonials</span></h2>
+            <div class="testimonials-container">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"HorseAI.life has transformed our breeding program. The quality of genetics available and the ease of the process is unmatched in the industry."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img" style="background-image: url('/api/placeholder/100/100')"></div>
+                        <div class="author-info">
+                            <h4>Sarah Thompson</h4>
+                            <p>Owner, Thompson Equestrian</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"As a stallion owner, I've seen a dramatic increase in demand since listing with HorseAI.life. Their platform provides incredible exposure to serious breeders."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img" style="background-image: url('/api/placeholder/100/100')"></div>
+                        <div class="author-info">
+                            <h4>Michael Rodriguez</h4>
+                            <p>Champion Breeder</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -603,11 +130,11 @@
                 <div class="footer-col">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Stallions</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="stallions.html">Stallions</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -625,327 +152,8 @@
         </div>
     </footer>
 
-    <script>
-        // Sample stallion data
-        const stallions = [
-            {
-                id: 1,
-                name: "Thunder's Legacy",
-                breed: "Thoroughbred",
-                age: 8,
-                lineage: "Son of Triple Crown winner Gallant Thunder",
-                description: "Known for speed and agility, Thunder's Legacy has produced multiple race winners.",
-                price: 3500,
-                image: "/api/placeholder/600/400"
-            },
-            {
-                id: 2,
-                name: "Midnight Commander",
-                breed: "Arabian",
-                age: 10,
-                lineage: "Descended from the legendary Al-Marah bloodline",
-                description: "Exceptional conformation with proven genetics for endurance and beauty.",
-                price: 4200,
-                image: "/api/placeholder/600/400"
-            },
-            {
-                id: 3,
-                name: "Royal Prestige",
-                breed: "Andalusian",
-                age: 7,
-                lineage: "Direct descendant of Favorito VII",
-                description: "Impressive dressage performer with excellent temperament and movement.",
-                price: 5000,
-                image: "/api/placeholder/600/400"
-            },
-            {
-                id: 4,
-                name: "Silver Summit",
-                breed: "Hanoverian",
-                age: 9,
-                lineage: "Sired by Olympic champion Silvano",
-                description: "Known for producing top-tier show jumping offspring with excellent technique.",
-                price: 4800,
-                image: "/api/placeholder/600/400"
-            },
-            {
-                id: 5,
-                name: "Golden Horizon",
-                breed: "Quarter Horse",
-                age: 6,
-                lineage: "Son of World Champion Golden Eagle",
-                description: "Versatile genetics producing offspring excelling in multiple disciplines.",
-                price: 3800,
-                image: "/api/placeholder/600/400"
-            },
-            {
-                id: 6,
-                name: "Majestic Vision",
-                breed: "Friesian",
-                age: 8,
-                lineage: "Direct descendant of Royal Friesland",
-                description: "Stunning black stallion with exceptional movement and presence.",
-                price: 5500,
-                image: "/api/placeholder/600/400"
-            }
-        ];
-        
-        // Cart array
-        let cart = [];
-        
-        // DOM elements
-        const navLinks = document.querySelectorAll('.nav-link');
-        const homePage = document.getElementById('home-page');
-        const stallionsPage = document.getElementById('stallions-page');
-        const cartPage = document.getElementById('cart-page');
-        const stallionsGrid = document.getElementById('stallions-grid');
-        const cartContent = document.getElementById('cart-content');
-        const cartCount = document.querySelector('.cart-count');
-        const exploreStallionsBtn = document.getElementById('explore-stallions');
-        
-        // Navigation
-        function showPage(pageId) {
-            // Hide all pages
-            homePage.style.display = 'none';
-            stallionsPage.style.display = 'none';
-            cartPage.style.display = 'none';
-            
-            // Show selected page
-            if (pageId === 'home') {
-                homePage.style.display = 'block';
-            } else if (pageId === 'stallions') {
-                stallionsPage.style.display = 'block';
-            } else if (pageId === 'cart') {
-                cartPage.style.display = 'block';
-                renderCart();
-            }
-            
-            // Update active nav link
-            navLinks.forEach(link => {
-                if (link.dataset.page === pageId) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-        }
-        
-        // Initialize with home page
-        showPage('home');
-        
-        // Add navigation event listeners
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                showPage(link.dataset.page);
-            });
-        });
-        
-        // Explore Stallions button
-        exploreStallionsBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            showPage('stallions');
-        });
-        
-        // Render stallions
-        function renderStallions() {
-            stallionsGrid.innerHTML = '';
-            
-            stallions.forEach(stallion => {
-                const stallionCard = document.createElement('div');
-                stallionCard.className = 'stallion-card';
-                stallionCard.innerHTML = `
-                    <div class="stallion-img" style="background-image: url('${stallion.image}')">
-                        <div class="stallion-price">$${stallion.price}</div>
-                    </div>
-                    <div class="stallion-info">
-                        <h3>${stallion.name}</h3>
-                        <div class="stallion-meta">
-                            <div><strong>Breed:</strong> ${stallion.breed}</div>
-                            <div><strong>Age:</strong> ${stallion.age}</div>
-                        </div>
-                        <p><strong>Lineage:</strong> ${stallion.lineage}</p>
-                        <p>${stallion.description}</p>
-                        <button class="btn add-to-cart" data-id="${stallion.id}">Add to Cart</button>
-                    </div>
-                `;
-                stallionsGrid.appendChild(stallionCard);
-            });
-            
-            // Add event listeners to Add to Cart buttons
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', () => {
-                    const stallionId = parseInt(button.dataset.id);
-                    addToCart(stallionId);
-                });
-            });
-        }
-        
-        // Add to cart
-        function addToCart(stallionId) {
-            const stallion = stallions.find(s => s.id === stallionId);
-            
-            // Check if already in cart
-            if (!cart.some(item => item.id === stallionId)) {
-                cart.push(stallion);
-                updateCartCount();
-                
-                // Show confirmation
-                alert(`${stallion.name} has been added to your cart!`);
-            } else {
-                alert(`${stallion.name} is already in your cart!`);
-            }
-        }
-        
-        // Remove from cart
-        function removeFromCart(stallionId) {
-            cart = cart.filter(item => item.id !== stallionId);
-            updateCartCount();
-            renderCart();
-        }
-        
-        // Update cart count
-        function updateCartCount() {
-            cartCount.textContent = cart.length;
-        }
-        
-        // Render cart
-        function renderCart() {
-            if (cart.length === 0) {
-                cartContent.innerHTML = `
-                    <div class="cart-empty">
-                        <h3>Your cart is empty</h3>
-                        <p>Browse our premium stallion collection to find the perfect match for your mare.</p>
-                        <a href="#" class="btn" id="browse-stallions">Browse Stallions</a>
-                    </div>
-                `;
-                
-                // Add event listener to Browse Stallions button
-                document.getElementById('browse-stallions').addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showPage('stallions');
-                });
-                
-                return;
-            }
-            
-            let totalPrice = 0;
-            
-            // Create cart table
-            let cartHTML = `
-                <table class="cart-table">
-                    <thead>
-                        <tr>
-                            <th>Stallion</th>
-                            <th>Breed</th>
-                            <th>Price</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-            `;
-            
-            cart.forEach(item => {
-                totalPrice += item.price;
-                
-                cartHTML += `
-                    <tr>
-                        <td>
-                            <div class="cart-product">
-                                <img src="${item.image}" alt="${item.name}">
-                                <div class="cart-product-info">
-                                    <h4>${item.name}</h4>
-                                    <p>${item.age} years old</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>${item.breed}</td>
-                        <td>$${item.price}</td>
-                        <td><span class="remove-btn" data-id="${item.id}">✕</span></td>
-                    </tr>
-                `;
-            });
-            
-            cartHTML += `
-                    </tbody>
-                </table>
-                
-                <div class="cart-total">
-                    <div class="cart-total-info">
-                        <h3>Order Summary</h3>
-                        <p>Total: $${totalPrice}</p>
-                        <button class="btn" id="checkout-btn">Proceed to Checkout</button>
-                    </div>
-                </div>
-                
-                <div class="checkout-form">
-                    <h3>Payment Information</h3>
-                    <form id="payment-form">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="card-number">Card Number</label>
-                            <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" required>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="expiry">Expiry Date</label>
-                                <input type="text" id="expiry" class="form-control" placeholder="MM/YY" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="cvv">CVV</label>
-                                <input type="text" id="cvv" class="form-control" placeholder="123" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="address">Billing Address</label>
-                            <input type="text" id="address" class="form-control" required>
-                        </div>
-                        
-                        <button type="submit" class="btn">Complete Purchase</button>
-                    </form>
-                </div>
-            `;
-            
-            cartContent.innerHTML = cartHTML;
-            
-            // Add event listeners to remove buttons
-            document.querySelectorAll('.remove-btn').forEach(button => {
-                button.addEventListener('click', () => {
-                    const stallionId = parseInt(button.dataset.id);
-                    removeFromCart(stallionId);
-                });
-            });
-            
-            // Add event listener to checkout button
-            document.getElementById('checkout-btn').addEventListener('click', () => {
-                document.querySelector('.checkout-form').scrollIntoView({ behavior: 'smooth' });
-            });
-            
-            // Add event listener to payment form
-            document.getElementById('payment-form').addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Thank you for your purchase! Your order has been processed successfully.');
-                cart = [];
-                updateCartCount();
-                showPage('home');
-            });
-        }
-        
-        // Initialize stallions
-        renderStallions();
-        updateCartCount();
-    </script>
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

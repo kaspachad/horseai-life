@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stallions Catalog - HorseAI.life</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Horse<span>AI</span>.life</div>
+            <nav>
+                <ul id="main-nav">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="stallions.html" class="nav-link active">Stallions</a></li>
+                    <li><a href="cart.html" class="nav-link">Cart <span class="cart-icon">🛒 <span class="cart-count">0</span></span></a></li>
+                    <li id="auth-links">
+                        <a href="login.html" class="nav-link">Login</a>
+                        <a href="signup.html" class="nav-link btn-small">Sign Up</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Stallions Catalog -->
+    <section class="stallions-catalog">
+        <div class="container">
+            <h2 class="section-title">Premium <span>Stallions</span></h2>
+            
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <div class="search-box">
+                    <input type="text" id="search-stallions" placeholder="Search stallions...">
+                </div>
+                <div class="filters">
+                    <select id="filter-breed">
+                        <option value="">All Breeds</option>
+                        <option value="Thoroughbred">Thoroughbred</option>
+                        <option value="Arabian">Arabian</option>
+                        <option value="Andalusian">Andalusian</option>
+                        <option value="Hanoverian">Hanoverian</option>
+                        <option value="Quarter Horse">Quarter Horse</option>
+                        <option value="Friesian">Friesian</option>
+                    </select>
+                    <select id="filter-age">
+                        <option value="">All Ages</option>
+                        <option value="3-5">3-5 years</option>
+                        <option value="6-10">6-10 years</option>
+                        <option value="11+">11+ years</option>
+                    </select>
+                    <select id="filter-price">
+                        <option value="">All Prices</option>
+                        <option value="0-3000">$0 - $3,000</option>
+                        <option value="3000-5000">$3,000 - $5,000</option>
+                        <option value="5000+">$5,000+</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Stallions Grid -->
+            <div class="stallions-grid" id="stallions-grid">
+                <!-- Stallions will be dynamically loaded here -->
+                <div class="loading">Loading stallions...</div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <!-- Pagination will be dynamically generated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>About HorseAI.life</h3>
+                    <p>Premier provider of equine genetics services with a focus on excellence, ethics, and innovation in horse breeding technology.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="stallions.html">Stallions</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Email: info@horseai.life</li>
+                        <li>Phone: (555) 123-4567</li>
+                        <li>Address: 123 Equestrian Way, Lexington, KY 40507</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HorseAI.life. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/stallions.js"></script>
+</body>
+</html>
